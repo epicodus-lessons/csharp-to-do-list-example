@@ -5,10 +5,12 @@ namespace ToDoList.Models
   public class Item
   {
     private string _description;
+    private static List<Item> _instances = new List<Item> {};
 
     public Item (string description)
     {
       _description = description;
+      _instances.Add(this);
     }
 
     public string GetDescription()
@@ -23,7 +25,7 @@ namespace ToDoList.Models
 
     public static List<Item> GetAll()
     {
-      return new List<Item> {};
+      return _instances;
     }
 
   }
