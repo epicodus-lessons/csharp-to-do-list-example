@@ -9,5 +9,10 @@ namespace ToDoList.Models
       _description = description;
     }
 
+    public string GetDescription()
+    {
+      return _description;
+    }
+
   }
 }
