@@ -16,7 +16,7 @@ namespace ToDoList.Models
 
     public void SetDescription(string newDescription)
     {
-
+      _description = newDescription;
     }
 
   }
