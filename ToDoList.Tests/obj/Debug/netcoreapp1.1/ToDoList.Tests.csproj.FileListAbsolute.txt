@@ -1,0 +1,14 @@
+/Users/epicodus_staff/Desktop/ToDoList.Solution/ToDoList.Tests/bin/Debug/netcoreapp1.1/Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+/Users/epicodus_staff/Desktop/ToDoList.Solution/ToDoList.Tests/bin/Debug/netcoreapp1.1/Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+/Users/epicodus_staff/Desktop/ToDoList.Solution/ToDoList.Tests/bin/Debug/netcoreapp1.1/Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+/Users/epicodus_staff/Desktop/ToDoList.Solution/ToDoList.Tests/bin/Debug/netcoreapp1.1/ToDoList.Tests.deps.json
+/Users/epicodus_staff/Desktop/ToDoList.Solution/ToDoList.Tests/bin/Debug/netcoreapp1.1/ToDoList.Tests.runtimeconfig.json
+/Users/epicodus_staff/Desktop/ToDoList.Solution/ToDoList.Tests/bin/Debug/netcoreapp1.1/ToDoList.Tests.runtimeconfig.dev.json
+/Users/epicodus_staff/Desktop/ToDoList.Solution/ToDoList.Tests/bin/Debug/netcoreapp1.1/ToDoList.Tests.dll
+/Users/epicodus_staff/Desktop/ToDoList.Solution/ToDoList.Tests/bin/Debug/netcoreapp1.1/ToDoList.Tests.pdb
+/Users/epicodus_staff/Desktop/ToDoList.Solution/ToDoList.Tests/bin/Debug/netcoreapp1.1/ToDoList.dll
+/Users/epicodus_staff/Desktop/ToDoList.Solution/ToDoList.Tests/bin/Debug/netcoreapp1.1/ToDoList.pdb
+/Users/epicodus_staff/Desktop/ToDoList.Solution/ToDoList.Tests/obj/Debug/netcoreapp1.1/ToDoList.Tests.csproj.CoreCompileInputs.cache
+/Users/epicodus_staff/Desktop/ToDoList.Solution/ToDoList.Tests/obj/Debug/netcoreapp1.1/ToDoList.Tests.AssemblyInfo.cs
+/Users/epicodus_staff/Desktop/ToDoList.Solution/ToDoList.Tests/obj/Debug/netcoreapp1.1/ToDoList.Tests.dll
+/Users/epicodus_staff/Desktop/ToDoList.Solution/ToDoList.Tests/obj/Debug/netcoreapp1.1/ToDoList.Tests.pdb
