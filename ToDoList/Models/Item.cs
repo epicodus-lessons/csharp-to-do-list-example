@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace ToDoList.Models
 {
   public class Item
@@ -17,6 +19,11 @@ namespace ToDoList.Models
     public void SetDescription(string newDescription)
     {
       _description = newDescription;
+    }
+
+    public static List<Item> GetAll()
+    {
+      return new List<Item> {};
     }
 
   }
