@@ -6,8 +6,13 @@ using System;
 namespace ToDoList.Tests
 {
   [TestClass]
-  public class ItemTest
+  public class ItemTest : IDisposable
   {
+
+    public void Dispose()
+    {
+      Item.ClearAll();
+    }
 
     [TestMethod]
     public void ItemConstructor_CreatesInstanceOfItem_Item()
