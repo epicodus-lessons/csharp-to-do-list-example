@@ -24,7 +24,7 @@ namespace ToDoList.Controllers
     public ActionResult Create(string description)
     {
       Item myItem = new Item(description);
-      return View("Index", myItem);
+      return RedirectToAction("Index");
     }
 
   }
