@@ -1,6 +1,4 @@
-@{
-  using ToDoList.Models;
-}
+@using ToDoList.Models;
 
 <h1>To Do List</h1>
 <ul>
@@ -13,7 +11,7 @@
 {
   @foreach (Item item in Model)
   {
-    <li>@Model.GetDescription()</li>
+    <li>@item.GetDescription()</li>
   }
 }
 
