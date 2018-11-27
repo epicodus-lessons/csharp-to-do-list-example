@@ -2,7 +2,6 @@
 
 <h1>To Do List</h1>
 <ul>
-
 @if (Model.Count == 0)
 {
   <p>You have no items in your to do list!</p>
@@ -14,6 +13,9 @@
     <li>@item.GetDescription()</li>
   }
 }
-
 </ul>
 <a href="/items/new">Add a new item.</a>
+
+<form action="/items/delete" method="post">
+  <button type="submit" name="button">Clear All Items</button>
+</form>
