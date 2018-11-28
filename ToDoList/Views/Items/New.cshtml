@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset='utf-8'>
-    <title>Hello friend!</title>
-  </head>
-  <body>
-    <h1>To Do List</h1>
-    <form action="/items" method="post">
-      <label for="description">Add a new item</label>
-      <input id="description" name="description" type="text">
-      <button type="submit">Submit</button>
-    </form>
-  </body>
-</html>
+<h1>Add a new item to @Model.GetName()</h1>
+
+<form action='/items/@Model.GetId()/items' method='post'>
+  <input id='categoryId' name='categoryId' type='hidden' value='@Model.GetId()'>
+  <label for='itemDescription'>Item description</label>
+  <input id='itemDescription' name='itemDescription' type='text'>
+  <button type='submit'>Add item</button>
+</form>
