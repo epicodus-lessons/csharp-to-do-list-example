@@ -1,0 +1,13 @@
+<h1>Categories</h1>
+
+@if (@Model.Count == 0)
+{
+  <h3>No categories have been added yet!</h3>
+}
+
+@foreach (var category in Model)
+{
+  <h3><a href='/categories/@category.GetId()'>@category.GetName()</a></h3>
+}
+
+<p><a href='/'>Back home</a></p>
