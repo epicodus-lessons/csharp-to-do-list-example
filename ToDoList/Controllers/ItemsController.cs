@@ -20,10 +20,14 @@ namespace ToDoList.Controllers
       return RedirectToAction("Index");
     }
 
-    [HttpGet("/items/{id}")]
-    public ActionResult Show(int id)
+    [HttpGet("/categories/{categoryId}/items/{itemId}")]
+    public ActionResult Show(int categoryId, int itemId)
     {
-      Item item = Item.Find(id);
+      Item item = Item.Find(itemId);
+      Dictionary<string, object> model = new Dictionary<string, object>();
+      Category category = Category.Find(categoryId);
+      model.Add("item", item);
+      model.Add("category", category);
       return View(item);
     }
 
