@@ -7,13 +7,6 @@ namespace ToDoList.Controllers
   public class ItemsController : Controller
   {
 
-    [HttpGet("/items")]
-    public ActionResult Index()
-    {
-      List<Item> allItems = Item.GetAll();
-      return View(allItems);
-    }
-
     [HttpGet("/items/new")]
     public ActionResult New()
     {
