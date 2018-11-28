@@ -27,11 +27,10 @@ namespace ToDoList.Tests
       public void Index_HasCorrectModelType_ItemList()
       {
         //Arrange
-        HomeController controller = new HomeController();
-        ViewResult indexView = controller.Index() as ViewResult;
+        ViewResult indexView = new HomeController().Index() as ViewResult;
 
         //Act
-        ViewResult result = indexView.ViewData.Model;
+        var result = indexView.ViewData.Model;
 
         //Assert
         Assert.IsInstanceOfType(result, typeof(List<Item>));
