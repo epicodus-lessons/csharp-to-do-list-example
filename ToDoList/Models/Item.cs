@@ -83,8 +83,9 @@ namespace ToDoList.Models
       else
       {
         Item newItem = (Item) otherItem;
+        bool idEquality = (this.GetId() == newItem.GetId());
         bool descriptionEquality = (this.GetDescription() == newItem.GetDescription());
-        return (descriptionEquality);
+        return (idEquality && descriptionEquality);
       }
     }
 
