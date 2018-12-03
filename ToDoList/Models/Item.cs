@@ -8,10 +8,10 @@ namespace ToDoList.Models
     private string _description;
     private int _id;
 
-    public Item (string description)
+    public Item (string description, int id = 0)
     {
       _description = description;
-      _id = _instances.Count;
+      _id = id;
     }
 
     public string GetDescription()
