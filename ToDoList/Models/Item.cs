@@ -99,7 +99,7 @@ namespace ToDoList.Models
       description.Value = this._description;
       cmd.Parameters.Add(description);
       cmd.ExecuteNonQuery();
-      _id = cmd.LastInsertedId;
+      _id = (int) cmd.LastInsertedId;
        conn.Close();
        if (conn != null)
        {
