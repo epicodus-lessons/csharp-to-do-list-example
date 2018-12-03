@@ -24,10 +24,11 @@ namespace ToDoList.Models
       _description = newDescription;
     }
 
-    // public int GetId()
-    // {
-    //   return _id;
-    // }
+    public int GetId()
+    {
+      // Temporarily returning dummy id to get beyond compiler errors, until we refactor to work with database.
+      return 0;
+    }
 
     public static List<Item> GetAll()
     {
