@@ -14,7 +14,7 @@ namespace ToDoList.Tests
       Item.ClearAll();
     }
 
-    public ItemTests()
+    public ItemTest()
     {
       DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=to_do_list_test;";
     }
