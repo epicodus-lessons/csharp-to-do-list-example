@@ -6,12 +6,12 @@ namespace ToDoList.Models
   public class Item
   {
     private string _description;
-    // private int _id;
+    private int _id;
 
     public Item (string description)
     {
       _description = description;
-      // _id = _instances.Count;
+      _id = _instances.Count;
     }
 
     public string GetDescription()
@@ -26,8 +26,7 @@ namespace ToDoList.Models
 
     public int GetId()
     {
-      // Temporarily returning dummy id to get beyond compiler errors, until we refactor to work with database.
-      return 0;
+      return _id;
     }
 
     public static List<Item> GetAll()
@@ -99,7 +98,7 @@ namespace ToDoList.Models
       description.ParameterName = "@ItemDescription";
       description.Value = this._description;
       cmd.Parameters.Add(description);
-      cmd.ExecuteNonQuery(); 
+      cmd.ExecuteNonQuery();
 
       // One more line of logic will go here in the next lesson.
 
