@@ -91,6 +91,23 @@ namespace ToDoList.Models
 
     public void Save()
     {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"INSERT INTO items (description) VALUES (@ItemDescription);";
+      MySqlParameter description = new MySqlParameter();
+      description.ParameterName = "@ItemDescription";
+      description.Value = this._description;
+      cmd.Parameters.Add(description);
+      cmd.ExecuteNonQuery(); 
+
+      // One more line of logic will go here in the next lesson.
+
+       conn.Close();
+       if (conn != null)
+       {
+         conn.Dispose();
+       }
     }
 
   }
