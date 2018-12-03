@@ -67,10 +67,12 @@ namespace ToDoList.Models
       }
     }
 
-    // public static Item Find(int searchId)
-    // {
-    //   return _instances[searchId-1];
-    // }
+    public static Item Find(int searchId)
+    {
+      // Temporarily returning dummy item to get beyond compiler errors, until we refactor to work with database.
+      Item dummyItem = new Item("dummy item");
+      return dummyItem;
+    }
 
   }
 }
