@@ -33,10 +33,14 @@ namespace ToDoList.Controllers
     }
 
     [HttpGet("/categories/{categoryId}/items/{itemId}/edit")]
-    public ActionResult Edit(int itemId)
+    public ActionResult Edit(int categoryId, int itemId)
     {
-      Item itemToEdit = Item.Find(itemId);
-      return View(itemToEdit);
+      Dictionary<string, object> model = new Dictionary<string, object>();
+      Category category = Category.Find(categoryId);
+      model.Add("category", category);
+      Item item = Item.Find(itemId);
+      model.Add("item", item);
+      return View(model);
     }
 
   }
