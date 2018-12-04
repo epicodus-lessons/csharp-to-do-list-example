@@ -102,7 +102,7 @@ namespace ToDoList.Tests
     //   Assert.AreEqual(1, result);
     // }
 
-  
+
     [TestMethod]
     public void Find_ReturnsCorrectItemFromDatabase_Item()
     {
@@ -158,6 +158,22 @@ namespace ToDoList.Tests
 
       //Assert
       Assert.AreEqual(testId, result);
+    }
+
+    [TestMethod]
+    public void Edit_UpdatesItemInDatabase_String()
+    {
+      //Arrange
+      Item testItem = new Item("Walk the Dog");
+      testItem.Save();
+      string secondDescription = "Mow the lawn";
+
+      //Act
+      testItem.Edit(secondDescription);
+      string result = Item.Find(testItem.GetId()).GetDescription();
+
+      //Assert
+      Assert.AreEqual(secondDescription, result);
     }
 
   }
