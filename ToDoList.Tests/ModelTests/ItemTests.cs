@@ -184,7 +184,7 @@ namespace ToDoList.Tests
       Item newItem = new Item("Walk the dog.", newCategory.GetId());
 
       //Act
-      string result = newItem.GetCategoryId();
+      int result = newItem.GetCategoryId();
 
       //Assert
       Assert.AreEqual(newCategory.GetId(), result);
