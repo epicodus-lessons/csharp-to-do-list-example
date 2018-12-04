@@ -80,5 +80,19 @@ namespace ToDoList.Models
       return _items;
     }
 
+    public override bool Equals(System.Object otherCategory)
+    {
+      if (!(otherCategory is Category))
+      {
+        return false;
+      }
+      else
+      {
+        Category newCategory = (Category) otherCategory;
+        bool nameEquality = this.GetName().Equals(newCategory.GetName());
+        return nameEquality;
+      }
+    }
+
   }
 }
