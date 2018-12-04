@@ -3,5 +3,6 @@
 <h2>@Model["item"].GetDescription()</h2>
 <h3>Category: @Model["category"].GetName()</h3>
 
+<a href='/categories/@Model["category"].GetId()/items/@Model["item"].GetId()/edit'>Edit this Item</a>
 <a href='/categories/@Model["category"].GetId()/items/new'>Add another item</a>
 <a href='/categories'>View all categories</a>
