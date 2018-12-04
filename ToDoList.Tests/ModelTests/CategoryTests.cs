@@ -130,5 +130,17 @@ namespace ToDoList.Tests
       Assert.AreEqual(0, result);
     }
 
+    [TestMethod]
+    public void Equals_ReturnsTrueIfNamesAreTheSame_Category()
+    {
+      //Arrange, Act
+      Category firstCategory = new Category("Household chores");
+      Category secondCategory = new Category("Household chores");
+
+      //Assert
+      Assert.AreEqual(firstCategory, secondCategory);
+    }
+
+
   }
 }
