@@ -57,7 +57,8 @@ namespace ToDoList.Models
       {
         int CategoryId = rdr.GetInt32(0);
         string CategoryName = rdr.GetString(1);
-        Category newCategory = new Category(CategoryName, CategoryId); 
+        Category newCategory = new Category(CategoryName, CategoryId);
+        allCategories.Add(newCategory);
       }
       conn.Close();
       if (conn != null)
@@ -81,7 +82,7 @@ namespace ToDoList.Models
     {
       if (!(otherCategory is Category))
       {
-          return false;
+        return false;
       }
       else
       {
