@@ -41,8 +41,7 @@ namespace ToDoList.Models
       {
         int itemId = rdr.GetInt32(0);
         string itemDescription = rdr.GetString(1);
-        // Line below now only provides one argument!
-        Item newItem = new Item(itemDescription);
+        Item newItem = new Item(itemDescription, itemId);
         allItems.Add(newItem);
       }
       conn.Close();
