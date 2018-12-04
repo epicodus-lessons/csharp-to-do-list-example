@@ -7,10 +7,12 @@ namespace ToDoList.Models
   {
     private string _description;
     private int _id;
+    private int _categoryId;
 
-    public Item (string description, int id = 0)
+    public Item (string description, int categoryId, int id = 0)
     {
       _description = description;
+      _categoryId = categoryId;
       _id = id;
     }
 
@@ -29,19 +31,25 @@ namespace ToDoList.Models
       return _id;
     }
 
+    public int GetCategoryId()
+    {
+      return _categoryId;
+    }
+
     public static List<Item> GetAll()
     {
-      List<Item> allItems = new List<Item> { };
+      List<Item> allItems = new List<Item> {};
       MySqlConnection conn = DB.Connection();
       conn.Open();
-      MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+      var cmd = conn.CreateCommand() as MySqlCommand;
       cmd.CommandText = @"SELECT * FROM items;";
-      MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+      var rdr = cmd.ExecuteReader() as MySqlDataReader;
       while(rdr.Read())
       {
         int itemId = rdr.GetInt32(0);
         string itemDescription = rdr.GetString(1);
-        Item newItem = new Item(itemDescription, itemId);
+        int itemCategoryId = rdr.GetInt32(2);
+        Item newItem = new Item(itemDescription, itemCategoryId, itemId);
         allItems.Add(newItem);
       }
       conn.Close();
@@ -71,26 +79,28 @@ namespace ToDoList.Models
       MySqlConnection conn = DB.Connection();
       conn.Open();
       var cmd = conn.CreateCommand() as MySqlCommand;
-      cmd.CommandText = @"SELECT * FROM `items` WHERE id = @thisId;";
-      MySqlParameter thisId = new MySqlParameter();
-      thisId.ParameterName = "@thisId";
-      thisId.Value = id;
-      cmd.Parameters.Add(thisId);
+      cmd.CommandText = @"SELECT * FROM items WHERE id = (@searchId);";
+      MySqlParameter searchId = new MySqlParameter();
+      searchId.ParameterName = "@searchId";
+      searchId.Value = id;
+      cmd.Parameters.Add(searchId);
       var rdr = cmd.ExecuteReader() as MySqlDataReader;
       int itemId = 0;
-      string itemDescription = "";
-      while (rdr.Read())
+      string itemName = "";
+      int itemCategoryId = 0;
+      while(rdr.Read())
       {
-         itemId = rdr.GetInt32(0);
-         itemDescription = rdr.GetString(1);
+        itemId = rdr.GetInt32(0);
+        itemName = rdr.GetString(1);
+        itemCategoryId = rdr.GetInt32(2);
       }
-      Item foundItem= new Item(itemDescription, itemId);  // This line is new!
-       conn.Close();
-       if (conn != null)
-       {
-         conn.Dispose();
-       }
-      return foundItem;  // This line is new!
+      Item newItem = new Item(itemName, itemCategoryId, itemId);
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
+      return newItem;
     }
 
     public override bool Equals(System.Object otherItem)
@@ -101,11 +111,12 @@ namespace ToDoList.Models
       }
       else
       {
-        Item newItem = (Item) otherItem;
-        bool idEquality = (this.GetId() == newItem.GetId());
-        bool descriptionEquality = (this.GetDescription() == newItem.GetDescription());
-        return (idEquality && descriptionEquality);
-      }
+         Item newItem = (Item) otherItem;
+         bool idEquality = this.GetId() == newItem.GetId();
+         bool descriptionEquality = this.GetDescription() == newItem.GetDescription();
+         bool categoryEquality = this.GetCategoryId() == newItem.GetCategoryId();
+         return (idEquality && descriptionEquality && categoryEquality);
+       }
     }
 
     public void Save()
@@ -113,18 +124,22 @@ namespace ToDoList.Models
       MySqlConnection conn = DB.Connection();
       conn.Open();
       var cmd = conn.CreateCommand() as MySqlCommand;
-      cmd.CommandText = @"INSERT INTO items (description) VALUES (@ItemDescription);";
+      cmd.CommandText = @"INSERT INTO items (description, category_id) VALUES (@description, @category_id);";
       MySqlParameter description = new MySqlParameter();
-      description.ParameterName = "@ItemDescription";
+      description.ParameterName = "@description";
       description.Value = this._description;
       cmd.Parameters.Add(description);
+      MySqlParameter categoryId = new MySqlParameter();
+      categoryId.ParameterName = "@category_id";
+      categoryId.Value = this._categoryId;
+      cmd.Parameters.Add(categoryId);
       cmd.ExecuteNonQuery();
       _id = (int) cmd.LastInsertedId;
-       conn.Close();
-       if (conn != null)
-       {
-         conn.Dispose();
-       }
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
     }
 
     public void Edit(string newDescription)
