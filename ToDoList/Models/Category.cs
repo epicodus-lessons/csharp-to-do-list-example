@@ -68,11 +68,12 @@ namespace ToDoList.Models
       return allCategories;
     }
 
-    // public static Category Find(int searchId)
-    // {
-    //   return _instances[searchId-1];
-    // }
-
+    public static Category Find(int searchId)
+    {
+      Category dummyCategory = new Category("dummy category");
+      return dummyCategory;
+    }
+    
     public List<Item> GetItems()
     {
       return _items;
