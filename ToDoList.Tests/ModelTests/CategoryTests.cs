@@ -120,5 +120,15 @@ namespace ToDoList.Tests
       CollectionAssert.AreEqual(newList, result);
     }
 
+    [TestMethod]
+    public void GetAll_CategoriesEmptyAtFirst_List()
+    {
+      //Arrange, Act
+      int result = Category.GetAll().Count;
+
+      //Assert
+      Assert.AreEqual(0, result);
+    }
+
   }
 }
