@@ -5,16 +5,14 @@ namespace ToDoList.Models
 {
   public class Category
   {
-    private static List<Category> _instances = new List<Category> {};
     private string _name;
     private int _id;
     private List<Item> _items;
 
-    public Category(string categoryName)
+    public Category(string categoryName, int id = 0)
     {
       _name = categoryName;
-      _instances.Add(this);
-      _id = _instances.Count;
+      _id = id;
       _items = new List<Item>{};
     }
 
@@ -70,10 +68,10 @@ namespace ToDoList.Models
       return allCategories;
     }
 
-    public static Category Find(int searchId)
-    {
-      return _instances[searchId-1];
-    }
+    // public static Category Find(int searchId)
+    // {
+    //   return _instances[searchId-1];
+    // }
 
     public List<Item> GetItems()
     {
@@ -84,13 +82,14 @@ namespace ToDoList.Models
     {
       if (!(otherCategory is Category))
       {
-        return false;
+          return false;
       }
       else
       {
         Category newCategory = (Category) otherCategory;
+        bool idEquality = this.GetId().Equals(newCategory.GetId());
         bool nameEquality = this.GetName().Equals(newCategory.GetName());
-        return nameEquality;
+        return (idEquality && nameEquality);
       }
     }
 
@@ -105,6 +104,7 @@ namespace ToDoList.Models
       name.Value = this._name;
       cmd.Parameters.Add(name);
       cmd.ExecuteNonQuery();
+      _id = (int) cmd.LastInsertedId;
       conn.Close();
       if (conn != null)
       {
