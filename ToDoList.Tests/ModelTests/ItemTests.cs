@@ -101,22 +101,21 @@ namespace ToDoList.Tests
     //   //Assert
     //   Assert.AreEqual(1, result);
     // }
-    //
-    // [TestMethod]
-    // public void Find_ReturnsCorrectItem_Item()
-    // {
-    //   //Arrange
-    //   string description01 = "Walk the dog";
-    //   string description02 = "Wash the dishes";
-    //   Item newItem1 = new Item(description01);
-    //   Item newItem2 = new Item(description02);
-    //
-    //   //Act
-    //   Item result = Item.Find(2);
-    //
-    //   //Assert
-    //   Assert.AreEqual(newItem2, result);
-    // }
+
+  
+    [TestMethod]
+    public void Find_ReturnsCorrectItemFromDatabase_Item()
+    {
+      //Arrange
+      Item testItem = new Item("Mow the lawn");
+      testItem.Save();
+
+      //Act
+      Item foundItem = Item.Find(testItem.GetId());
+
+      //Assert
+      Assert.AreEqual(testItem, foundItem);
+    }
 
     [TestMethod]
     public void Equals_ReturnsTrueIfDescriptionsAreTheSame_Item()
