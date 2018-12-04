@@ -127,5 +127,9 @@ namespace ToDoList.Models
        }
     }
 
+    public void Edit(string newDescription)
+    {
+    }
+
   }
 }
