@@ -87,7 +87,6 @@ namespace ToDoList.Models
         CategoryName = rdr.GetString(1);
       }
       Category newCategory = new Category(CategoryName, CategoryId);
-      allCategories.Add(newCategory);
       conn.Close();
       if (conn != null)
       {
