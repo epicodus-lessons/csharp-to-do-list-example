@@ -155,5 +155,22 @@ namespace ToDoList.Tests
       Assert.AreEqual(testId, result);
     }
 
+    [TestMethod]
+    public void GetItems_RetrievesAllItemsWithCategory_ItemList()
+    {
+      //Arrange, Act
+      Category testCategory = new Category("Household chores");
+      testCategory.Save();
+      Item firstItem = new Item("Mow the lawn", testCategory.GetId());
+      firstItem.Save();
+      Item secondItem = new Item("Do the dishes", testCategory.GetId());
+      secondItem.Save();
+      List<Item> testItemList = new List<Item> {firstItem, secondItem};
+      List<Item> resultItemList = testCategory.GetItems();
+
+      //Assert
+      CollectionAssert.AreEqual(testItemList, resultItemList);
+    }
+
   }
 }
