@@ -73,21 +73,19 @@ namespace ToDoList.Tests
       CollectionAssert.AreEqual(newList, result);
     }
 
-    // [TestMethod]
-    // public void Find_ReturnsCorrectCategory_Category()
-    // {
-    //   //Arrange
-    //   string name01 = "Work";
-    //   string name02 = "School";
-    //   Category newCategory1 = new Category(name01);
-    //   Category newCategory2 = new Category(name02);
-    //
-    //   //Act
-    //   Category result = Category.Find(2);
-    //
-    //   //Assert
-    //   Assert.AreEqual(newCategory2, result);
-    // }
+    [TestMethod]
+    public void Find_ReturnsCategoryInDatabase_Category()
+    {
+      //Arrange
+      Category testCategory = new Category("Household chores");
+      testCategory.Save();
+
+      //Act
+      Category foundCategory = Category.Find(testCategory.GetId());
+
+      //Assert
+      Assert.AreEqual(testCategory, foundCategory);
+    }
 
     [TestMethod]
     public void GetItems_ReturnsEmptyItemList_ItemList()
