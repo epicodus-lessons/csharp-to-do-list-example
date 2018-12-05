@@ -7,13 +7,11 @@ namespace ToDoList.Models
   {
     private string _name;
     private int _id;
-    private List<Item> _items;
 
     public Category(string categoryName, int id = 0)
     {
       _name = categoryName;
       _id = id;
-      _items = new List<Item>{};
     }
 
     public string GetName()
@@ -97,7 +95,8 @@ namespace ToDoList.Models
 
     public List<Item> GetItems()
     {
-      return _items;
+      List<Item> allCategoryItems = new List<Item> {};
+      return allCategoryItems;
     }
 
     public override bool Equals(System.Object otherCategory)
