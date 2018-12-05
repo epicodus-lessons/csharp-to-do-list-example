@@ -103,24 +103,6 @@ namespace ToDoList.Tests
     }
 
     [TestMethod]
-    public void AddItem_AssociatesItemWithCategory_ItemList()
-    {
-      //Arrange
-      string description = "Walk the dog.";
-      Item newItem = new Item(description, 1);
-      List<Item> newList = new List<Item> { newItem };
-      string name = "Work";
-      Category newCategory = new Category(name);
-      newCategory.AddItem(newItem);
-
-      //Act
-      List<Item> result = newCategory.GetItems();
-
-      //Assert
-      CollectionAssert.AreEqual(newList, result);
-    }
-
-    [TestMethod]
     public void GetAll_CategoriesEmptyAtFirst_List()
     {
       //Arrange, Act

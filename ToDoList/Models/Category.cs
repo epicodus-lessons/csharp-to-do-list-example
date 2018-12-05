@@ -24,11 +24,6 @@ namespace ToDoList.Models
       return _id;
     }
 
-    public void AddItem(Item item)
-    {
-      _items.Add(item);
-    }
-
     public static void ClearAll()
     {
       MySqlConnection conn = DB.Connection();
