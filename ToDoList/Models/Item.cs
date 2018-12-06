@@ -157,8 +157,26 @@ namespace ToDoList.Models
      }
 
      public void AddCategory(Category newCategory)
-    {
-    }
-    
+     {
+       MySqlConnection conn = DB.Connection();
+       conn.Open();
+       var cmd = conn.CreateCommand() as MySqlCommand;
+       cmd.CommandText = @"INSERT INTO categories_items (category_id, item_id) VALUES (@CategoryId, @ItemId);";
+       MySqlParameter category_id = new MySqlParameter();
+       category_id.ParameterName = "@CategoryId";
+       category_id.Value = newCategory.GetId();
+       cmd.Parameters.Add(category_id);
+       MySqlParameter item_id = new MySqlParameter();
+       item_id.ParameterName = "@ItemId";
+       item_id.Value = _id;
+       cmd.Parameters.Add(item_id);
+       cmd.ExecuteNonQuery();
+       conn.Close();
+       if (conn != null)
+       {
+         conn.Dispose();
+       }
+     }
+
   }
 }
