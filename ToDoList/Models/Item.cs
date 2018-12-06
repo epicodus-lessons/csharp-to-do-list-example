@@ -149,5 +149,12 @@ namespace ToDoList.Models
         conn.Dispose();
       }
     }
+
+    public List<Category> GetCategories()
+     {
+       List<Category> categories = new List<Category> {};
+       return categories;
+     }
+     
   }
 }

@@ -168,10 +168,8 @@ namespace ToDoList.Tests
       //Arrange
       Item testItem = new Item("Mow the lawn");
       testItem.Save();
-
       Category testCategory1 = new Category("Home stuff");
       testCategory1.Save();
-
       Category testCategory2 = new Category("Work stuff");
       testCategory2.Save();
 
