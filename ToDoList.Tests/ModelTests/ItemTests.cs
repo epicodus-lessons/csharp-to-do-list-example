@@ -162,5 +162,27 @@ namespace ToDoList.Tests
       Assert.AreEqual(secondDescription, result);
     }
 
+    [TestMethod]
+    public void GetCategories_ReturnsAllItemCategories_CategoryList()
+    {
+      //Arrange
+      Item testItem = new Item("Mow the lawn");
+      testItem.Save();
+
+      Category testCategory1 = new Category("Home stuff");
+      testCategory1.Save();
+
+      Category testCategory2 = new Category("Work stuff");
+      testCategory2.Save();
+
+      //Act
+      testItem.AddCategory(testCategory1);
+      List<Category> result = testItem.GetCategories();
+      List<Category> testList = new List<Category> {testCategory1};
+
+      //Assert
+      CollectionAssert.AreEqual(testList, result);
+    }
+
   }
 }
