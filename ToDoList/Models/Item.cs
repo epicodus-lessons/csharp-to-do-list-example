@@ -155,6 +155,10 @@ namespace ToDoList.Models
        List<Category> categories = new List<Category> {};
        return categories;
      }
-     
+
+     public void AddCategory(Category newCategory)
+    {
+    }
+    
   }
 }
