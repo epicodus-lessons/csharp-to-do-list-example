@@ -8,12 +8,12 @@ namespace ToDoList.Controllers
   public class CategoriesController : Controller
   {
 
-    // [HttpGet("/categories")]
-    // public ActionResult Index()
-    // {
-    //   List<Category> allCategories = Category.GetAll();
-    //   return View(allCategories);
-    // }
+    [HttpGet("/categories")]
+    public ActionResult Index()
+    {
+      List<Category> allCategories = Category.GetAll();
+      return View(allCategories);
+    }
     //
     // [HttpGet("/categories/new")]
     // public ActionResult New()
