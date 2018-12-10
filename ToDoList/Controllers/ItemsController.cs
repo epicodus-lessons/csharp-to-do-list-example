@@ -28,18 +28,20 @@ namespace ToDoList.Controllers
       List<Item> allItems = Item.GetAll();
       return View("Index", allItems);
     }
-    //
-    // [HttpGet("/categories/{categoryId}/items/{itemId}")]
-    // public ActionResult Show(int categoryId, int itemId)
-    // {
-    //   Item item = Item.Find(itemId);
-    //   Dictionary<string, object> model = new Dictionary<string, object>();
-    //   Category category = Category.Find(categoryId);
-    //   model.Add("item", item);
-    //   model.Add("category", category);
-    //   return View(model);
-    // }
-    //
+
+    [HttpGet("/items/{id}")]
+    public ActionResult Show(int id)
+    {
+      Dictionary<string, object> model = new Dictionary<string, object>();
+      Item selectedItem = Item.Find(id);
+      List<Category> itemCategories = selectedItem.GetCategories();
+      List<Category> allCategories = Category.GetAll();
+      model.Add("selectedItem", selectedItem);
+      model.Add("itemCategories", itemCategories);
+      model.Add("allCategories", allCategories);
+      return View(model);
+    }
+
     // [HttpPost("/items/delete")]
     // public ActionResult DeleteAll()
     // {
