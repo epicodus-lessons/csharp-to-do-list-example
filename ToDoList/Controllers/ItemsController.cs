@@ -19,6 +19,14 @@ namespace ToDoList.Controllers
     {
       return View();
     }
+
+    [HttpPost("/items")]
+    public ActionResult Create(string description)
+    {
+      Item newItem = new Item(description);
+      newItem.Save();
+      return RedirectToAction("Success", "Home");
+    }
     //
     // [HttpGet("/categories/{categoryId}/items/{itemId}")]
     // public ActionResult Show(int categoryId, int itemId)
