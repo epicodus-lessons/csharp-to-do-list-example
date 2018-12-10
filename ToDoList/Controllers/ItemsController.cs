@@ -14,12 +14,11 @@ namespace ToDoList.Controllers
       return View(allItems);
     }
 
-    // [HttpGet("/categories/{categoryId}/items/new")]
-    // public ActionResult New(int categoryId)
-    // {
-    //  Category category = Category.Find(categoryId);
-    //  return View(category);
-    // }
+    [HttpGet("/items/new")]
+    public ActionResult New()
+    {
+      return View();
+    }
     //
     // [HttpGet("/categories/{categoryId}/items/{itemId}")]
     // public ActionResult Show(int categoryId, int itemId)
