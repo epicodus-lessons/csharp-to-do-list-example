@@ -29,17 +29,19 @@ namespace ToDoList.Controllers
       List<Category> allCategories = Category.GetAll();
       return View("Index", allCategories);
     }
-    //
-    // [HttpGet("/categories/{id}")]
-    // public ActionResult Show(int id)
-    // {
-    //   Dictionary<string, object> model = new Dictionary<string, object>();
-    //   Category selectedCategory = Category.Find(id);
-    //   List<Item> categoryItems = selectedCategory.GetItems();
-    //   model.Add("category", selectedCategory);
-    //   model.Add("items", categoryItems);
-    //   return View(model);
-    // }
+
+    [HttpGet("/categories/{id}")]
+    public ActionResult Show(int id)
+    {
+      Dictionary<string, object> model = new Dictionary<string, object>();
+      Category selectedCategory = Category.Find(id);
+      List<Item> categoryItems = selectedCategory.GetItems();
+      List<Item> allItems = Item.GetAll();
+      model.Add("category", selectedCategory);
+      model.Add("categoryItems", categoryItems);
+      model.Add("allItems", allItems);
+      return View(model);
+    }
 
   }
 }
