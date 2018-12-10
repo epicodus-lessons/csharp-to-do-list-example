@@ -25,7 +25,8 @@ namespace ToDoList.Controllers
     {
       Item newItem = new Item(description);
       newItem.Save();
-      return RedirectToAction("Success", "Home");
+      List<Item> allItems = Item.GetAll();
+      return View("Index", allItems);
     }
     //
     // [HttpGet("/categories/{categoryId}/items/{itemId}")]
