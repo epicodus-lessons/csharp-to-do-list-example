@@ -1,8 +1,10 @@
-<h1>Add a new item to @Model.GetName()</h1>
+<h1>Add a new item</h1>
 
-<form action='/categories/@Model.GetId()/items' method='post'>
-  <input id='categoryId' name='categoryId' type='hidden' value='@Model.GetId()'>
-  <label for='itemDescription'>Item description</label>
-  <input id='itemDescription' name='itemDescription' type='text'>
-  <button type='submit'>Add item</button>
+<form action="/items" method="post">
+  <label for="description">Item description:</label>
+  <input id="description" name="description" type="text">
+  <button type="submit">Add new item</button>
 </form>
+
+<p><a href="/">Back home</a></p>
+<p><a href="/items">View all items</a></p>
