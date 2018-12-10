@@ -1,12 +1,33 @@
-<h3>Here are all the items in this category:</h3>
+@using ToDoList.Models;
 
-<ol>
-@foreach (var item in @Model["items"])
+<h1>To Do List</h1>
+<h2>Category: @Model["category"].GetName()</h2>
+<hr />
+
+@if (@Model["categoryItems"].Count != 0)
 {
-  <li><a href='/categories/@Model["category"].GetId()/items/@item.GetId()'>@item.GetDescription()</a></li>
+  <h4>Here are all the items in this category:</h4>
+  <ul>
+    @foreach (var item in @Model["categoryItems"])
+    {
+      <li>@item.GetDescription()</li>
+    }
+  </ul>
 }
-</ol>
 
-<p><a href='/categories/@Model["category"].GetId()/items/new'>Add a new item</a></p>
-<p><a href='/categories'>Return to category list</a></p>
-<p><a href='/'>Return to Main Page</a></p>
+<h4>Add a item to this category:</h4>
+
+<form action='/categories/@Model["category"].GetId()/items/new' method='post'>
+  <label for='itemId'>Select a item</label>
+  <select id='itemId' name='itemId' type='text'>
+
+    @foreach (var item in @Model["allItems"])
+    {
+      <option value='@item.GetId()'>@item.GetDescription()</option>
+    }
+
+  </select>
+  <button type='submit'>Add</button>
+</form>
+
+<p><a href="/">Return to Main Page</a></p>
